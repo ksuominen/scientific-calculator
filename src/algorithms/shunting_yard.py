@@ -1,32 +1,4 @@
-operator_precedences = {"+": 2, "-": 2, "*": 3, "/": 3, "^": 4}
-
-operator_associativities = {
-    "+": "left",
-    "-": "left",
-    "*": "left",
-    "/": "left",
-    "^": "right",
-}
-
-
-def get_precedence(operator):
-    return operator_precedences.get(operator)
-
-
-def get_associativity(operator):
-    return operator_associativities.get(operator)
-
-
-def is_left_associative(operator):
-    return get_associativity(operator) == "left"
-
-
-def is_operator(token):
-    return token in operator_precedences.keys()
-
-
-def is_number(token):
-    return isinstance(token, (int, float))
+from algorithms import algorithm_helpers as helper
 
 
 def shunting_yard(input):
@@ -35,23 +7,27 @@ def shunting_yard(input):
     stack = []
 
     for token in input:
-        if is_number(token):
+        if helper.is_number(token):
             output.append(token)
 
-        elif is_operator(token):
+        elif helper.is_operator(token):
             if len(stack) == 0 or stack[-1] == "(":
                 stack.append(token)
                 continue
-            prec = get_precedence(token)
-            if prec > get_precedence(stack[-1]) or (
-                prec > get_precedence(stack[-1]) and not is_left_associative(token)
+            prec = helper.get_precedence(token)
+            if prec > helper.get_precedence(stack[-1]) or (
+                prec > helper.get_precedence(stack[-1])
+                and not helper.is_left_associative(token)
             ):
                 stack.append(token)
                 continue
 
             while (stack and stack[-1] != "(") and (
-                prec < get_precedence(stack[-1])
-                or (prec == get_precedence(stack[-1]) and is_left_associative(token))
+                prec < helper.get_precedence(stack[-1])
+                or (
+                    prec == helper.get_precedence(stack[-1])
+                    and helper.is_left_associative(token)
+                )
             ):
                 output.append(stack.pop())
             stack.append(token)

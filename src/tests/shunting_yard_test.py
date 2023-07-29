@@ -3,49 +3,6 @@ from algorithms import shunting_yard as sy
 
 
 class TestShuntingYard(unittest.TestCase):
-    def test_get_precedence_plus(self):
-        precedence = sy.get_precedence("+")
-        self.assertEqual(precedence, 2)
-
-    def test_get_precedence_power(self):
-        precedence = sy.get_precedence("^")
-        self.assertEqual(precedence, 4)
-
-    def test_get_associativity_division(self):
-        assoc = sy.get_associativity("/")
-        self.assertEqual(assoc, "left")
-
-    def test_get_associativity_power(self):
-        assoc = sy.get_associativity("^")
-        self.assertEqual(assoc, "right")
-
-    def test_multiplication_is_left_associative(self):
-        self.assertTrue(sy.is_left_associative("*"))
-
-    def test_power_is_not_left_associative(self):
-        self.assertFalse(sy.is_left_associative("^"))
-
-    def test_is_operator_minus(self):
-        self.assertTrue(sy.is_operator("-"))
-
-    def test_char_not_operator(self):
-        self.assertFalse(sy.is_operator("b"))
-
-    def test_number_not_operator(self):
-        self.assertFalse(sy.is_operator(5))
-
-    def test_is_number_int(self):
-        self.assertTrue(sy.is_number(7))
-
-    def test_is_number_float(self):
-        self.assertTrue(sy.is_number(17.34))
-
-    def test_string_is_not_number(self):
-        self.assertFalse(sy.is_number("Hello"))
-
-    def test_operator_is_not_number(self):
-        self.assertFalse(sy.is_number("^"))
-
     def test_invalid_input_raises_valueerror(self):
         with self.assertRaises(ValueError):
             operation = [1, "+", 2, "hello"]
