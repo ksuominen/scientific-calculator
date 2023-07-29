@@ -16,8 +16,11 @@ class Calculator:
 
     def calculate(self):
         # todo: replace self._expression with self.parse_input()
-        postfix = sy.shunting_yard(self._expression)
-        result = rp.evaluate(postfix)
+        try:
+            postfix = sy.shunting_yard(self._expression)
+            result = rp.evaluate(postfix)
+        except:
+            result = "Syntax error"
         self.clear()
         return result
 

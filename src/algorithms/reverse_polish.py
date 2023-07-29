@@ -44,8 +44,11 @@ def evaluate(input):
             stack.append(token)
 
         else:
+            if len(stack) < 2:
+                raise ValueError("Invalid input")
             right = stack.pop()
             left = stack.pop()
             stack.append(calculate(left, right, token))
-
+    if len(stack) != 1:
+        raise ValueError("Invalid input")
     return stack.pop()
