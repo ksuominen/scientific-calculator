@@ -46,6 +46,21 @@ class TestShuntingYard(unittest.TestCase):
     def test_operator_is_not_number(self):
         self.assertFalse(sy.is_number("^"))
 
+    def test_invalid_input_raises_valueerror(self):
+        with self.assertRaises(ValueError):
+            operation = [1, "+", 2, "hello"]
+            sy.shunting_yard(operation)
+
+    def test_too_many_opening_brackets_raises_valueerror(self):
+        with self.assertRaises(ValueError):
+            operation = [1, "+", 2, "("]
+            sy.shunting_yard(operation)
+
+    def test_too_many_closing_brackets_raises_valueerror(self):
+        with self.assertRaises(ValueError):
+            operation = [1, "+", 2, ")"]
+            sy.shunting_yard(operation)
+
     def test_shunting_yard_1(self):
         operation = [4, "+", 18, "/", "(", 9, "-", 3, ")"]
         result = [4, 18, 9, 3, "-", "/", "+"]
