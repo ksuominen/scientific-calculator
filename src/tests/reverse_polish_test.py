@@ -1,5 +1,5 @@
 import unittest
-from algorithms import reverese_polish as re
+from algorithms import reverse_polish as re
 
 
 class TestReversePolish(unittest.TestCase):
