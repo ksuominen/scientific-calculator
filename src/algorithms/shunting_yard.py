@@ -2,6 +2,17 @@ from algorithms import algorithm_helpers as helper
 
 
 def shunting_yard(input):
+    """An algorithm for parsing an arithmetical expression in infix notation into postfix notation.
+
+    Args:
+        input (list): An arithmetical expression in infix notation stored in a list.
+
+    Raises:
+        ValueError: Raises ValueError, if there are too many opening or closing brackets or invalid arguments in the input.
+
+    Returns:
+        list: The arithmetical expression in postfix notation stored in a list.
+    """
     output = []
 
     stack = []
