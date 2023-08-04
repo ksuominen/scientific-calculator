@@ -8,6 +8,8 @@ operator_associativities = {
     "^": "right",
 }
 
+function_parameters = {"sqrt": 1, "min": 2}
+
 
 def get_precedence(operator):
     """A function to get precedence of an operator.
@@ -45,6 +47,18 @@ def is_left_associative(operator):
     return get_associativity(operator) == "left"
 
 
+def get_parameter_amount(token):
+    """A function to get amount of function's parameters.
+
+    Args:
+        token (string): The function abbreviation.
+
+    Returns:
+        int: Returns 1 or 2 depending on the function.
+    """
+    return function_parameters.get(token)
+
+
 def is_operator(token):
     """Tests if the input token is an operator.
 
@@ -67,3 +81,15 @@ def is_number(token):
         boolean: Returns True if the token is of type int or float, else False.
     """
     return isinstance(token, (int, float))
+
+
+def is_function(token):
+    """Tests if the input token is a function.
+
+    Args:
+        token: The input token to be tested.
+
+    Returns:
+        boolean: Returns True if the token is an abbreviation of a function, else False.
+    """
+    return token in function_parameters.keys()

@@ -45,3 +45,18 @@ class TestAlgorithmHelpers(unittest.TestCase):
 
     def test_operator_is_not_number(self):
         self.assertFalse(helper.is_number("^"))
+
+    def test_sqrt_is_function(self):
+        self.assertTrue(helper.is_function("sqrt"))
+
+    def test_number_not_function(self):
+        self.assertFalse(helper.is_function(5))
+
+    def test_operator_not_function(self):
+        self.assertFalse(helper.is_function("+"))
+
+    def test_sqrt_has_one_parameter(self):
+        self.assertEqual(helper.get_parameter_amount("sqrt"), 1)
+
+    def test_min_has_two_parameters(self):
+        self.assertEqual(helper.get_parameter_amount("min"), 2)
