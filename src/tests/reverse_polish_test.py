@@ -18,7 +18,22 @@ class TestReversePolish(unittest.TestCase):
         operation = [1, 2, "/"]
         self.assertEqual(re.evaluate(operation), 0.5)
 
-    def test_reverese_polish_3(self):
+    def test_reverese_polish_4(self):
         # (2+3)^2 = 25
         operation = [2, 3, "+", 2, "^"]
         self.assertEqual(re.evaluate(operation), 25)
+
+    def test_reverese_polish_5(self):
+        # (2 - 1) * 3 = 3
+        operation = [2, 1, "-", 3, "*"]
+        self.assertEqual(re.evaluate(operation), 3)
+
+    def test_too_little_operands_raises_valueerror(self):
+        with self.assertRaises(ValueError):
+            operation = [1, "+"]
+            re.evaluate(operation)
+
+    def test_too_many_operands_raises_valueerror(self):
+        with self.assertRaises(ValueError):
+            operation = [1, 2, "+", 3, 4]
+            re.evaluate(operation)

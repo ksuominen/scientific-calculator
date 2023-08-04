@@ -34,6 +34,9 @@ def evaluate(input):
     Args:
         input (list): A mathematical expression in postfix notation stored in a list.
 
+    Raises:
+        ValueError: Raises ValueError, if there are incompatible amount of numbers or operators.
+
     Returns:
         Returns the result of evaluating the expression. Return type is either int or float.
     """
