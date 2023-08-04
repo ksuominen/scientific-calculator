@@ -65,3 +65,67 @@ class TestCalculator(unittest.TestCase):
         self.calc.update_expression(2)
         result = self.calc.calculate()
         self.assertEqual(result, "Syntax error")
+
+    def test_parse_input_multidigit_works(self):
+        self.calc.update_expression(1)
+        self.calc.update_expression(2)
+        self.calc.update_expression(3)
+        result = self.calc.parse_input()
+        self.assertEqual(result, [123])
+
+    def test_parse_input_float_works(self):
+        self.calc.update_expression(1)
+        self.calc.update_expression(".")
+        self.calc.update_expression(2)
+        self.calc.update_expression(3)
+        result = self.calc.parse_input()
+        self.assertEqual(result, [1.23])
+
+    def test_parse_input_multidigit_with_operator_works(self):
+        self.calc.update_expression(1)
+        self.calc.update_expression(2)
+        self.calc.update_expression("+")
+        self.calc.update_expression(3)
+        result = self.calc.parse_input()
+        self.assertEqual(result, [12, "+", 3])
+
+    def test_parse_input_float_with_operator_works(self):
+        self.calc.update_expression(4)
+        self.calc.update_expression("*")
+        self.calc.update_expression(1)
+        self.calc.update_expression(".")
+        self.calc.update_expression(2)
+        self.calc.update_expression(3)
+        result = self.calc.parse_input()
+        self.assertEqual(result, [4, "*", 1.23])
+
+    def test_parse_input_with_parentheses_works(self):
+        self.calc.update_expression(4)
+        self.calc.update_expression(".")
+        self.calc.update_expression(1)
+        self.calc.update_expression("*")
+        self.calc.update_expression("(")
+        self.calc.update_expression(2)
+        self.calc.update_expression("+")
+        self.calc.update_expression(3)
+        self.calc.update_expression(")")
+        result = self.calc.parse_input()
+        self.assertEqual(result, [4.1, "*", "(", 2, "+", 3, ")"])
+
+    def test_too_many_dots_raises_valueerror(self):
+        self.calc.update_expression(1)
+        self.calc.update_expression(".")
+        self.calc.update_expression(".")
+        self.calc.update_expression(2)
+        with self.assertRaises(ValueError):
+            self.calc.parse_input()
+
+    def test_too_many_dots_with_operator_raises_valueerror(self):
+        self.calc.update_expression(1)
+        self.calc.update_expression(".")
+        self.calc.update_expression(".")
+        self.calc.update_expression(2)
+        self.calc.update_expression("*")
+        self.calc.update_expression(2)
+        with self.assertRaises(ValueError):
+            self.calc.parse_input()

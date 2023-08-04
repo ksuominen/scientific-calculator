@@ -1,4 +1,8 @@
-from algorithms import shunting_yard as sy, reverse_polish as rp
+from algorithms import (
+    shunting_yard as sy,
+    reverse_polish as rp,
+    algorithm_helpers as helper,
+)
 
 
 class Calculator:
@@ -15,9 +19,8 @@ class Calculator:
         self._expression.clear()
 
     def calculate(self):
-        # todo: replace self._expression with self.parse_input()
         try:
-            postfix = sy.shunting_yard(self._expression)
+            postfix = sy.shunting_yard(self.parse_input())
             result = rp.evaluate(postfix)
         except:
             result = "Syntax error"
@@ -27,5 +30,28 @@ class Calculator:
     def parse_input(self):
         input = self._expression
         infix = []
-        # todo: parse floats and multidigit numbers etc
+        current = ""
+
+        for token in input:
+            if helper.is_number(token) or token == ".":
+                current += str(token)
+            else:
+                if current:
+                    if current.count(".") > 1:
+                        raise ValueError("Invalid input")
+                    if "." in current:
+                        infix.append(float(current))
+                        current = ""
+                    else:
+                        infix.append(int(current))
+                        current = ""
+                infix.append(token)
+
+        if current:
+            if current.count(".") > 1:
+                raise ValueError("Invalid input")
+            if "." in current:
+                infix.append(float(current))
+            else:
+                infix.append(int(current))
         return infix
