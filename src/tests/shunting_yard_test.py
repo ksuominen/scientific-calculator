@@ -57,3 +57,18 @@ class TestShuntingYard(unittest.TestCase):
         operation = [1, "*", "(", 2, "+", 3, "*", 4, ")", "+", 5]
         result = [1, 2, 3, 4, "*", "+", "*", 5, "+"]
         self.assertEqual(sy.shunting_yard(operation), result)
+
+    def test_shunting_yard_min(self):
+        operation = ["min", "(", 2, ",", 3, ")"]
+        result = [2, 3, "min"]
+        self.assertEqual(sy.shunting_yard(operation), result)
+
+    def test_shunting_yard_sqrt(self):
+        operation = ["sqrt", "(", 1, "+", 2, ")", "*", 3]
+        result = [1, 2, "+", "sqrt", 3, "*"]
+        self.assertEqual(sy.shunting_yard(operation), result)
+
+    def test_shunting_yard_sqrt_min(self):
+        operation = ["sqrt", "(", "min", "(", 2, ",", 3, ")", "/", 3, "*", 2, ")"]
+        result = [2, 3, "min", 3, "/", 2, "*", "sqrt"]
+        self.assertEqual(sy.shunting_yard(operation), result)
