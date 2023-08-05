@@ -129,3 +129,21 @@ class TestCalculator(unittest.TestCase):
         self.calc.update_expression(2)
         with self.assertRaises(ValueError):
             self.calc.parse_input()
+
+    def test_calculate_with_sqrt(self):
+        self.calc.update_expression("sqrt")
+        self.calc.update_expression("(")
+        self.calc.update_expression(4)
+        self.calc.update_expression(")")
+        result = self.calc.calculate()
+        self.assertEqual(result, 2)
+
+    def test_calculate_with_min(self):
+        self.calc.update_expression("min")
+        self.calc.update_expression("(")
+        self.calc.update_expression(4)
+        self.calc.update_expression(",")
+        self.calc.update_expression(1)
+        self.calc.update_expression(")")
+        result = self.calc.calculate()
+        self.assertEqual(result, 1)
