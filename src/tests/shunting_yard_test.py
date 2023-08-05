@@ -8,6 +8,21 @@ class TestShuntingYard(unittest.TestCase):
             operation = [1, "+", 2, "hello"]
             sy.shunting_yard(operation)
 
+    def test_invalid_input_raises_valueerror2(self):
+        with self.assertRaises(ValueError):
+            operation = [","]
+            sy.shunting_yard(operation)
+
+    def test_invalid_input_raises_valueerror3(self):
+        with self.assertRaises(ValueError):
+            operation = [",", 2]
+            sy.shunting_yard(operation)
+
+    def test_invalid_input_raises_valueerror4(self):
+        with self.assertRaises(ValueError):
+            operation = [")"]
+            sy.shunting_yard(operation)
+
     def test_too_many_opening_brackets_raises_valueerror(self):
         with self.assertRaises(ValueError):
             operation = [1, "+", 2, "("]
