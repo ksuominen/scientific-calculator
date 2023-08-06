@@ -5,6 +5,7 @@ A scientific calculator to calculate mathematical expressions using Python. Algo
 ## Links to documentation
 
 - [Project definition](https://github.com/ksuominen/scientific-calculator/blob/master/documentation/project_definition.md)
+- [Testing document](https://github.com/ksuominen/scientific-calculator/blob/master/documentation/testing_document.md)
 
 # Weekly reports
 
