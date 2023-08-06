@@ -34,9 +34,39 @@ class CalculatorView:
         clear_button = Button(
             buttons_frame, text="CE", command=lambda: self.button_clear()
         ).grid(row=1, column=2)
+        delete_button = Button(
+            buttons_frame, text="C", command=lambda: self.button_delete()
+        ).grid(row=2, column=0)
+        negate_button = Button(
+            buttons_frame,
+            text="(-)",
+            command=lambda: self.function_button_click("negate"),
+        ).grid(row=2, column=1)
+        dot_button = Button(
+            buttons_frame, text=".", command=lambda: self.button_click(".")
+        ).grid(row=2, column=2)
+        left_parenth_button = Button(
+            buttons_frame, text="(", command=lambda: self.button_click("(")
+        ).grid(row=3, column=0)
+        rigth_parenth_button = Button(
+            buttons_frame, text=")", command=lambda: self.button_click(")")
+        ).grid(row=3, column=1)
+        min_button = Button(
+            buttons_frame,
+            text="min",
+            command=lambda: self.function_button_click("min"),
+        ).grid(row=3, column=2)
+        comma_button = Button(
+            buttons_frame, text=",", command=lambda: self.button_click(",")
+        ).grid(row=3, column=3)
 
     def button_click(self, token):
         self._calculator.update_expression(token)
+        self._input_field.config(text=self._calculator.get_expression_as_string())
+
+    def function_button_click(self, token):
+        self._calculator.update_expression(token)
+        self._calculator.update_expression("(")
         self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def button_clear(self):
@@ -46,3 +76,7 @@ class CalculatorView:
     def button_equal(self):
         result = self._calculator.calculate()
         self._input_field.config(text=result)
+
+    def button_delete(self):
+        self._calculator.delete_one()
+        self._input_field.config(text=self._calculator.get_expression_as_string())

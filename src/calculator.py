@@ -32,6 +32,10 @@ class Calculator:
         """A method to clear calculator's expression."""
         self._expression.clear()
 
+    def delete_one(self):
+        """A method to delete the last input from calculator's expression."""
+        self._expression.pop()
+
     def calculate(self):
         """A method to calculate the value of the calculator's expression.
 
