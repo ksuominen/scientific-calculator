@@ -30,13 +30,44 @@ def calculate(x, y, operator):
 
 
 def calc_func_with_one_param(func, x):
+    """A function to calculate the result of a function with one parameter.
+
+    Args:
+        func (string): A function to be calculated.
+        x: The parameter of the function. Type may be int or float.
+
+    Returns:
+        Returns the result of the expression. Type may be int or float.
+    """
     if func == "sqrt":
         return math.sqrt(x)
+    elif func == "abs":
+        return abs(x)
+    elif func == "sin":
+        return math.sin(x)
+    elif func == "cos":
+        return math.cos(x)
+    elif func == "tan":
+        return math.tan(x)
+    elif func == "negate":
+        return -1 * x
 
 
 def calc_func_with_two_params(func, x, y):
+    """A function to calculate the result of a function with two parameters.
+
+    Args:
+        func (string): A function to be calculated.
+        x: The parameter of the function. Type may be int or float.
+        y The parameter of the function. Type may be int or float.
+
+    Returns:
+        Returns the result of the expression. Type may be int or float.
+    """
     if func == "min":
         return min(x, y)
+    elif func == "max":
+        return max(x, y)
 
 
 def evaluate(input):

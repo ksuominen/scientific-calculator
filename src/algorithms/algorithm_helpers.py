@@ -8,7 +8,16 @@ operator_associativities = {
     "^": "right",
 }
 
-function_parameters = {"sqrt": 1, "min": 2}
+function_parameters = {
+    "sqrt": 1,
+    "abs": 1,
+    "sin": 1,
+    "cos": 1,
+    "tan": 1,
+    "negate": 1,
+    "min": 2,
+    "max": 2,
+}
 
 
 def get_precedence(operator):

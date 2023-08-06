@@ -1,5 +1,6 @@
 import unittest
 from algorithms import reverse_polish as re
+import math
 
 
 class TestReversePolish(unittest.TestCase):
@@ -49,7 +50,37 @@ class TestReversePolish(unittest.TestCase):
         result = re.evaluate(operation)
         self.assertEqual(result, 6)
 
+    def test_evaluate_with_abs_works(self):
+        operation = [1, 2, "-", "abs"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, 1)
+
+    def test_evaluate_with_sin_works(self):
+        operation = [45, "sin"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, math.sin(45))
+
+    def test_evaluate_with_cos_works(self):
+        operation = [45, "cos"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, math.cos(45))
+
+    def test_evaluate_with_tan_works(self):
+        operation = [45, "tan"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, math.tan(45))
+
+    def test_evaluate_with_negate_works(self):
+        operation = [1, "negate"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, -1)
+
     def test_evaluate_with_min_works(self):
         operation = [2, 3, "min"]
         result = re.evaluate(operation)
         self.assertEqual(result, 2)
+
+    def test_evaluate_with_max_works(self):
+        operation = [8, 3, "max"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, 8)
