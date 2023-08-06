@@ -26,7 +26,10 @@ class Calculator:
         Returns:
             string: Returns the expression as string.
         """
-        return "".join(map(str, self._expression))
+        if self._expression:
+            return "".join(map(str, self._expression))
+        else:
+            return "0"
 
     def clear(self):
         """A method to clear calculator's expression."""
@@ -34,7 +37,8 @@ class Calculator:
 
     def delete_one(self):
         """A method to delete the last input from calculator's expression."""
-        self._expression.pop()
+        if self._expression:
+            self._expression.pop()
 
     def calculate(self):
         """A method to calculate the value of the calculator's expression.

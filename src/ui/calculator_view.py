@@ -48,7 +48,7 @@ class CalculatorView:
         left_parenth_button = Button(
             buttons_frame, text="(", command=lambda: self.button_click("(")
         ).grid(row=3, column=0)
-        rigth_parenth_button = Button(
+        right_parenth_button = Button(
             buttons_frame, text=")", command=lambda: self.button_click(")")
         ).grid(row=3, column=1)
         min_button = Button(
@@ -71,7 +71,7 @@ class CalculatorView:
 
     def button_clear(self):
         self._calculator.clear()
-        self._input_field.config(text="0")
+        self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def button_equal(self):
         result = self._calculator.calculate()
