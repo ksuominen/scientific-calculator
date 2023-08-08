@@ -11,6 +11,7 @@ class Calculator:
     def __init__(self):
         """The constructor of the class, creates a new calculator."""
         self._expression = []
+        self._answer = 0
 
     def update_expression(self, token):
         """A method to update the calculator's expression (list).
@@ -49,6 +50,7 @@ class Calculator:
         try:
             postfix = sy.shunting_yard(self.parse_input())
             result = rp.evaluate(postfix)
+            self._answer = result
         except:
             result = "Syntax error"
         self.clear()
@@ -68,7 +70,9 @@ class Calculator:
         current = ""
 
         for token in input:
-            if helper.is_number(token) or token == ".":
+            if token == "Ans":
+                infix.append(self._answer)
+            elif helper.is_number(token) or token == ".":
                 current += str(token)
             else:
                 if current:

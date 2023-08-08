@@ -62,6 +62,9 @@ class CalculatorView:
         comma_button = Button(
             buttons_frame, text=",", command=lambda: self.button_click(",")
         ).grid(row=3, column=3)
+        ans_button = Button(
+            buttons_frame, text="Ans", command=lambda: self.button_click("Ans")
+        ).grid(row=4, column=0)
 
     def button_click(self, token):
         self._calculator.update_expression(token)
