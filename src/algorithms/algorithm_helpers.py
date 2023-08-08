@@ -1,8 +1,8 @@
-operator_precedences = {"+": 2, "-": 2, "*": 3, "/": 3, "^": 4}
+operator_precedences = {"+": 2, "\u2212": 2, "*": 3, "/": 3, "^": 4}
 
 operator_associativities = {
     "+": "left",
-    "-": "left",
+    "\u2212": "left",
     "*": "left",
     "/": "left",
     "^": "right",
@@ -14,7 +14,7 @@ function_parameters = {
     "sin": 1,
     "cos": 1,
     "tan": 1,
-    "negate": 1,
+    "\u002D": 1,
     "min": 2,
     "max": 2,
 }

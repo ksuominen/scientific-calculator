@@ -28,6 +28,9 @@ class CalculatorView:
         plus_button = Button(
             buttons_frame, text="+", command=lambda: self.button_click("+")
         ).grid(row=1, column=0)
+        minus_button = Button(
+            buttons_frame, text="\u2212", command=lambda: self.button_click("\u2212")
+        ).grid(row=1, column=3)
         equal_button = Button(
             buttons_frame, text="=", command=lambda: self.button_equal()
         ).grid(row=1, column=1)
@@ -40,7 +43,7 @@ class CalculatorView:
         negate_button = Button(
             buttons_frame,
             text="(-)",
-            command=lambda: self.function_button_click("negate"),
+            command=lambda: self.function_button_click("\u002D"),
         ).grid(row=2, column=1)
         dot_button = Button(
             buttons_frame, text=".", command=lambda: self.button_click(".")

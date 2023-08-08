@@ -16,7 +16,7 @@ def calculate(x, y, operator):
     if operator == "+":
         return x + y
 
-    if operator == "-":
+    if operator == "\u2212":
         return x - y
 
     if operator == "*":
@@ -49,7 +49,7 @@ def calc_func_with_one_param(func, x):
         return math.cos(x)
     elif func == "tan":
         return math.tan(x)
-    elif func == "negate":
+    elif func == "\u002D":
         return -1 * x
 
 
