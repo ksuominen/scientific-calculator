@@ -55,6 +55,10 @@ def calc_func_with_one_param(func, x):
         return -1 * x
     elif func == "!":
         return math.factorial(x)
+    elif func == "log":
+        return math.log10(x)
+    elif func == "ln":
+        return math.log(x)
 
 
 def calc_func_with_two_params(func, x, y):

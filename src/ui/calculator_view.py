@@ -65,6 +65,25 @@ class CalculatorView:
         ans_button = Button(
             buttons_frame, text="Ans", command=lambda: self.button_click("Ans")
         ).grid(row=4, column=0)
+        pi_button = Button(
+            buttons_frame, text="\u03C0", command=lambda: self.button_click("\u03C0")
+        ).grid(row=4, column=1)
+        neper_button = Button(
+            buttons_frame, text="\u0065", command=lambda: self.button_click("\u0065")
+        ).grid(row=4, column=2)
+        log_button = Button(
+            buttons_frame, text="log", command=lambda: self.function_button_click("log")
+        ).grid(row=4, column=3)
+        ln_button = Button(
+            buttons_frame,
+            text="ln",
+            command=lambda: self.function_button_click("ln"),
+        ).grid(row=5, column=0)
+        sqrt_button = Button(
+            buttons_frame,
+            text="\u221A",
+            command=lambda: self.function_button_click("\u221A"),
+        ).grid(row=5, column=1)
 
     def button_click(self, token):
         self._calculator.update_expression(token)

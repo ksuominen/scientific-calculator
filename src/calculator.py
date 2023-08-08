@@ -3,6 +3,7 @@ from algorithms import (
     reverse_polish as rp,
     algorithm_helpers as helper,
 )
+from math import pi, e
 
 
 class Calculator:
@@ -72,6 +73,12 @@ class Calculator:
         for token in input:
             if token == "Ans":
                 infix.append(self._answer)
+            elif token == "\u03C0":
+                infix.append(pi)
+            elif token == "\u0065":
+                infix.append(e)
+            elif token == "\u221A":
+                infix.append("sqrt")
             elif helper.is_number(token) or token == ".":
                 current += str(token)
             else:
