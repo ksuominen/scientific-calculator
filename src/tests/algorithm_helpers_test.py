@@ -26,7 +26,7 @@ class TestAlgorithmHelpers(unittest.TestCase):
         self.assertFalse(helper.is_left_associative("^"))
 
     def test_is_operator_minus(self):
-        self.assertTrue(helper.is_operator("-"))
+        self.assertTrue(helper.is_operator("\u2212"))
 
     def test_char_not_operator(self):
         self.assertFalse(helper.is_operator("b"))

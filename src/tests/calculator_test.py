@@ -22,7 +22,7 @@ class TestCalculator(unittest.TestCase):
         self.calc.update_expression(23)
         self.calc.clear()
         expression = self.calc.get_expression_as_string()
-        self.assertEqual(expression, "")
+        self.assertEqual(expression, "0")
 
     def test_calculate_add(self):
         self.calc.update_expression(2)
@@ -33,7 +33,7 @@ class TestCalculator(unittest.TestCase):
 
     def test_calculate_subtraction(self):
         self.calc.update_expression(20)
-        self.calc.update_expression("-")
+        self.calc.update_expression("\u2212")
         self.calc.update_expression(5)
         result = self.calc.calculate()
         self.assertEqual(result, 15)

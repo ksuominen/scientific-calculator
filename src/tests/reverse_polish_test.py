@@ -26,7 +26,7 @@ class TestReversePolish(unittest.TestCase):
 
     def test_evaluate_5(self):
         # (2 - 1) * 3 = 3
-        operation = [2, 1, "-", 3, "*"]
+        operation = [2, 1, "\u2212", 3, "*"]
         self.assertEqual(re.evaluate(operation), 3)
 
     def test_too_little_operands_raises_valueerror(self):
@@ -51,7 +51,7 @@ class TestReversePolish(unittest.TestCase):
         self.assertEqual(result, 6)
 
     def test_evaluate_with_abs_works(self):
-        operation = [1, 2, "-", "abs"]
+        operation = [1, 2, "\u2212", "abs"]
         result = re.evaluate(operation)
         self.assertEqual(result, 1)
 
@@ -71,7 +71,7 @@ class TestReversePolish(unittest.TestCase):
         self.assertEqual(result, math.tan(45))
 
     def test_evaluate_with_negate_works(self):
-        operation = [1, "negate"]
+        operation = [1, "\u002D"]
         result = re.evaluate(operation)
         self.assertEqual(result, -1)
 
