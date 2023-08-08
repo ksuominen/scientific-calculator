@@ -14,6 +14,8 @@ function_parameters = {
     "sin": 1,
     "cos": 1,
     "tan": 1,
+    "rad": 1,
+    "!": 1,
     "\u002D": 1,
     "min": 2,
     "max": 2,

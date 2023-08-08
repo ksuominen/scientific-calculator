@@ -49,8 +49,12 @@ def calc_func_with_one_param(func, x):
         return math.cos(x)
     elif func == "tan":
         return math.tan(x)
+    elif func == "rad":
+        return math.radians(x)
     elif func == "\u002D":
         return -1 * x
+    elif func == "!":
+        return math.factorial(x)
 
 
 def calc_func_with_two_params(func, x, y):
