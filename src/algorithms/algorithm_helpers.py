@@ -19,6 +19,7 @@ function_parameters = {
     "\u002D": 1,  # negate
     "log": 1,
     "ln": 1,
+    "round": 1,
     "min": 2,
     "max": 2,
 }

@@ -59,6 +59,8 @@ def calc_func_with_one_param(func, x):
         return math.log10(x)
     elif func == "ln":
         return math.log(x)
+    elif func == "round":
+        return round(x)
 
 
 def calc_func_with_two_params(func, x, y):

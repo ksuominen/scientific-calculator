@@ -84,3 +84,28 @@ class TestReversePolish(unittest.TestCase):
         operation = [8, 3, "max"]
         result = re.evaluate(operation)
         self.assertEqual(result, 8)
+
+    def test_evaluate_round_works(self):
+        operation = [8.3, "round"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, 8)
+
+    def test_evaluate_factorial_works(self):
+        operation = [4, "!"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, 24)
+
+    def test_evaluate_degree_to_radians_works(self):
+        operation = [180, "rad"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, math.pi)
+
+    def test_evaluate_log_works(self):
+        operation = [10, "log"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, 1)
+
+    def test_evaluate_ln_works(self):
+        operation = [math.e, "ln"]
+        result = re.evaluate(operation)
+        self.assertEqual(result, 1)

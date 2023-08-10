@@ -87,3 +87,8 @@ class TestShuntingYard(unittest.TestCase):
         operation = ["sqrt", "(", "min", "(", 2, ",", 3, ")", "/", 3, "*", 2, ")"]
         result = [2, 3, "min", 3, "/", 2, "*", "sqrt"]
         self.assertEqual(sy.shunting_yard(operation), result)
+
+    def test_invalid_input_with_comma_raises_valueerror(self):
+        with self.assertRaises(ValueError):
+            operation = ["+", ",", 3, ")"]
+            sy.shunting_yard(operation)
