@@ -7,6 +7,8 @@ class CalculatorView:
         self._root = root
         self._calculator = calc.Calculator()
         self._input_field = None
+        self._ans_field = None
+        self._memorized_result_field = None
         self._initialize()
 
     def _initialize(self):
@@ -15,7 +17,17 @@ class CalculatorView:
         self._input_field = Label(
             input_frame, text="0", width=50, height=2, font=("Arial", 16), justify=RIGHT
         )
-        self._input_field.pack()
+        self._input_field.grid(row=0, column=1, rowspan=2)
+
+        self._ans_field = Label(
+            input_frame, text="Ans=0", width=8, height=1, font=("Arial", 10)
+        )
+        self._ans_field.grid(row=0, column=0, padx=1)
+        self._memorized_result_field = Label(
+            input_frame, text="M=0", width=8, height=1, font=("Arial", 10)
+        )
+        self._memorized_result_field.grid(row=1, column=0, padx=1)
+
         button_width = 8
         button_height = 2
         button_border = 1
@@ -409,6 +421,7 @@ class CalculatorView:
     def button_equal(self):
         result = self._calculator.calculate()
         self._input_field.config(text=result)
+        self._ans_field.config(text=f"Ans={result}")
 
     def button_delete(self):
         self._calculator.delete_one()
@@ -416,3 +429,5 @@ class CalculatorView:
 
     def button_save(self):
         self._calculator.save_result()
+        result = self._calculator.get_saved_result()
+        self._memorized_result_field.config(text=f"M={result}")
