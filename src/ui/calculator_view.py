@@ -391,7 +391,10 @@ class CalculatorView:
         ).grid(row=7, column=4)
 
     def button_click(self, token):
-        self._calculator.update_expression(token)
+        if token == "M":
+            self._calculator.update_expression(self._calculator.get_saved_result())
+        else:
+            self._calculator.update_expression(token)
         self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def function_button_click(self, token):
@@ -412,4 +415,4 @@ class CalculatorView:
         self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def button_save(self):
-        pass
+        self._calculator.save_result()

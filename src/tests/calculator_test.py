@@ -186,3 +186,11 @@ class TestCalculator(unittest.TestCase):
         self.calc.update_expression("Ans")
         result = self.calc.parse_input()
         self.assertEqual(result, [3])
+
+    def test_save_result(self):
+        self.calc.update_expression(1)
+        self.calc.update_expression("+")
+        self.calc.update_expression(2)
+        result = self.calc.calculate()
+        self.calc.save_result()
+        self.assertEqual(self.calc.get_saved_result(), 3)

@@ -13,6 +13,7 @@ class Calculator:
         """The constructor of the class, creates a new calculator."""
         self._expression = []
         self._answer = 0
+        self._result = 0
 
     def update_expression(self, token):
         """A method to update the calculator's expression (list).
@@ -41,6 +42,18 @@ class Calculator:
         """A method to delete the last input from calculator's expression."""
         if self._expression:
             self._expression.pop()
+
+    def save_result(self):
+        """A method to save the current result to a variable."""
+        self._result = self._answer
+
+    def get_saved_result(self):
+        """A methohd to return the saved result.
+
+        Returns:
+            Returns the saved result, type int or float. The default value is 0.
+        """
+        return self._result
 
     def calculate(self):
         """A method to calculate the value of the calculator's expression.
