@@ -14,19 +14,18 @@ class CalculatorView:
     def _initialize(self):
         input_frame = Frame(self._root)
         input_frame.pack(side=TOP)
+        self._ans_field = Label(
+            input_frame, text="Ans=0", width=10, height=1, font=("Arial", 10)
+        )
+        self._ans_field.grid(row=0, column=0)
+        self._memorized_result_field = Label(
+            input_frame, text="M=0", width=10, height=1, font=("Arial", 10)
+        )
+        self._memorized_result_field.grid(row=1, column=0)
         self._input_field = Label(
-            input_frame, text="0", width=50, height=2, font=("Arial", 16), justify=RIGHT
+            input_frame, text="0", width=30, height=2, font=("Arial", 16), justify=RIGHT
         )
         self._input_field.grid(row=0, column=1, rowspan=2)
-
-        self._ans_field = Label(
-            input_frame, text="Ans=0", width=8, height=1, font=("Arial", 10)
-        )
-        self._ans_field.grid(row=0, column=0, padx=1)
-        self._memorized_result_field = Label(
-            input_frame, text="M=0", width=8, height=1, font=("Arial", 10)
-        )
-        self._memorized_result_field.grid(row=1, column=0, padx=1)
 
         button_width = 8
         button_height = 2
@@ -421,6 +420,8 @@ class CalculatorView:
     def button_equal(self):
         result = self._calculator.calculate()
         self._input_field.config(text=result)
+        if isinstance(result, float):
+            result = "{:.5f}".format(result)
         self._ans_field.config(text=f"Ans={result}")
 
     def button_delete(self):
@@ -430,4 +431,6 @@ class CalculatorView:
     def button_save(self):
         self._calculator.save_result()
         result = self._calculator.get_saved_result()
+        if isinstance(result, float):
+            result = "{:.5f}".format(result)
         self._memorized_result_field.config(text=f"M={result}")
