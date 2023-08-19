@@ -40,17 +40,20 @@ class TestReversePolish(unittest.TestCase):
             re.evaluate(operation)
 
     def test_calc_func_with_one_param_works(self):
+        # √(4) = 2
         self.assertEqual(re.calc_func_with_one_param("sqrt", 4), 2)
 
     def test_calc_func_with_two_params_works(self):
         self.assertEqual(re.calc_func_with_two_params("min", 4, 1), 1)
 
     def test_evaluate_with_sqrt_works(self):
+        # √(2+2) * 3 = 6
         operation = [2, 2, "+", "sqrt", 3, "*"]
         result = re.evaluate(operation)
         self.assertEqual(result, 6)
 
     def test_evaluate_with_abs_works(self):
+        # abs(1-2) = 1
         operation = [1, 2, "\u2212", "abs"]
         result = re.evaluate(operation)
         self.assertEqual(result, 1)
