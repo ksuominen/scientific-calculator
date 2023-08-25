@@ -21,11 +21,13 @@ The UI is a crude graphical UI created with Tkinter. The design is very basic wi
 
 ### Shortcomings and suggestions for improvement
 
-- The ui is not the prettiest, and the input label field 0 is not all the way in the right side.
+- The ui design is not the prettiest.
 - The syntax for factorial is not the conventional one, e.g. x! (instead is !(x)).
 - sin, cos and tan functions take the input as radians. Would be great to have some kind of switch to choose, whether one wants to use radians or degrees. Now one has to use the rad function to convert degrees to radians.
 - If the expression is long, the whole of it doesn't show in the label field, and one cannot scroll backwards either, so difficult to check for syntax errors.
 - In case of syntax error, the calculator could keep the expression and the user could be able to correct the mistake. Now one needs to rewrite the whole expression in case of mistake.
+- It would be great, if the application could autoclose all the parentheses when pressing '='.
+- Maybe the app could show what  caused the syntax error instead of just saying syntax error? I chose to do it this way, since my Casio scientifix calculator just says error.
 
 ### References
 

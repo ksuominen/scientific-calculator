@@ -21,7 +21,7 @@ exit
 
 The coverage report can be generated in project directory:
 ```
-poetry run invoke coverage_report
+poetry run invoke coverage-report
 ```
 
 The coverage report is saved as index.html file in htmlcov folder.
