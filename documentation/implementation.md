@@ -22,6 +22,7 @@ The UI is a crude graphical UI created with Tkinter. The design is very basic wi
 ### Shortcomings and suggestions for improvement
 
 - The ui design is not the prettiest.
+- The ui is know separated into two classes, would probably be better to implement it in only one class (ui.py is little redundant).
 - The syntax for factorial is not the conventional one, e.g. x! (instead is !(x)).
 - Negative numbers are implemented with a function. 
 - sin, cos and tan functions take the input as radians. Would be great to have some kind of switch to choose, whether one wants to use radians or degrees. Now one has to use the rad function to convert degrees to radians.
