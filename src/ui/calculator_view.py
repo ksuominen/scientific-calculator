@@ -3,7 +3,14 @@ import calculator as calc
 
 
 class CalculatorView:
+    """The class responsible for the appearance and function of the user interface."""
+
     def __init__(self, root):
+        """The constructor that initializes the user interface.
+
+        Args:
+            root (tkinter.Tk): The root of the user interface.
+        """
         self._root = root
         self._calculator = calc.Calculator()
         self._input_field = None
@@ -12,6 +19,7 @@ class CalculatorView:
         self._initialize()
 
     def _initialize(self):
+        """A method that initializes the appearance of the user interface."""
         input_frame = Frame(self._root)
         input_frame.pack(side=TOP, padx=10, pady=5)
         self._ans_field = Label(
@@ -363,6 +371,11 @@ class CalculatorView:
         ).grid(row=7, column=4, padx=padding_x, pady=padding_y)
 
     def button_click(self, token):
+        """A method that adds a token to the expression when button is clicked.
+
+        Args:
+            token (int, string): A number 0-9, or string "M" (variable where result can be saved).
+        """
         if token == "M":
             self._calculator.update_expression(self._calculator.get_saved_result())
         else:
@@ -370,15 +383,22 @@ class CalculatorView:
         self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def function_button_click(self, token):
+        """A method that adds a function call and '(' to the expression when button is clicked.
+
+        Args:
+            token (string): The function to be added.
+        """
         self._calculator.update_expression(token)
         self._calculator.update_expression("(")
         self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def button_clear(self):
+        """A method that deletes the whole expression when button is clicked."""
         self._calculator.clear()
         self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def button_equal(self):
+        """A method that calculates the result of the expression when button is clicked."""
         result = self._calculator.calculate()
         self._input_field.config(text=result)
         if result != "Syntax error":
@@ -387,10 +407,12 @@ class CalculatorView:
             self._ans_field.config(text=f"Ans={result}")
 
     def button_delete(self):
+        """A method that deletes the last token from the input when button is clicked."""
         self._calculator.delete_one()
         self._input_field.config(text=self._calculator.get_expression_as_string())
 
     def button_save(self):
+        """A method that saves the result to a variable when button is clicked."""
         self._calculator.save_result()
         result = self._calculator.get_saved_result()
         if isinstance(result, float):

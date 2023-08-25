@@ -1,8 +1,9 @@
-from tkinter import Tk, StringVar
+from tkinter import Tk
 from ui.ui import UI
 
 
 def main():
+    """The function to start the application."""
     window = Tk()
     window.title("Scientific calculator")
     window.resizable(0, 0)
