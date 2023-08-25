@@ -16,3 +16,4 @@ A scientific calculator to calculate mathematical expressions using Python. Algo
 - [Weekly report 3](https://github.com/ksuominen/scientific-calculator/blob/master/documentation/weekly_report_3.md)
 - [Weekly report 4](https://github.com/ksuominen/scientific-calculator/blob/master/documentation/weekly_report_4.md)
 - [Weekly report 5](https://github.com/ksuominen/scientific-calculator/blob/master/documentation/weekly_report_5.md)
+- [Weekly report 6](https://github.com/ksuominen/scientific-calculator/blob/master/documentation/weekly_report_6.md)
