@@ -381,9 +381,10 @@ class CalculatorView:
     def button_equal(self):
         result = self._calculator.calculate()
         self._input_field.config(text=result)
-        if isinstance(result, float):
-            result = "{:.5f}".format(result)
-        self._ans_field.config(text=f"Ans={result}")
+        if result != "Syntax error":
+            if isinstance(result, float):
+                result = "{:.5f}".format(result)
+            self._ans_field.config(text=f"Ans={result}")
 
     def button_delete(self):
         self._calculator.delete_one()
