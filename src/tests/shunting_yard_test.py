@@ -92,3 +92,8 @@ class TestShuntingYard(unittest.TestCase):
         with self.assertRaises(ValueError):
             operation = ["+", ",", 3, ")"]
             sy.shunting_yard(operation)
+
+    def test_start_with_parentheses_work(self):
+        operation = ["(", 2, "+", 3, ")"]
+        result = [2, 3, "+"]
+        self.assertEqual(sy.shunting_yard(operation), result)

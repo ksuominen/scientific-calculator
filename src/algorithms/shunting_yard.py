@@ -70,7 +70,7 @@ def shunting_yard(input):
                     raise ValueError("Invalid input")
                 output.append(stack_top)
                 stack_top = stack.pop()
-            if helper.is_function(stack[-1]):
+            if stack and helper.is_function(stack[-1]):
                 output.append(stack.pop())
 
         else:
